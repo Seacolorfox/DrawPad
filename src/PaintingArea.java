@@ -2,11 +2,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
 
-public class PaintingArea extends JPanel implements MouseListener
+public class PaintingArea extends JPanel implements MouseListener, MouseMotionListener
 {
     int choiceShape = -1;
     Point point[] = new Point[2];
+    private Graphics graphics;
+    int x1;
+    int y1;
 
     PaintingArea()
     {
@@ -41,7 +45,24 @@ public class PaintingArea extends JPanel implements MouseListener
 
     @Override
     public void mousePressed(MouseEvent e) {
+        x1 = e.getX();
+        y1 = e.getY();
         point[0] = new Point(e.getX(),e.getY());       //MousePressed --> GetFirstPoint
+    }
+
+    @Override
+    public void mouseDragged(MouseEvent e) {
+        int x,y;
+        x = e.getX();
+        y = e.getY();
+        graphics.drawLine(x1,y1,x,y);
+        x1 = x;
+        y1 = y;
+    }
+
+    @Override
+    public void mouseMoved(MouseEvent e) {
+
     }
 
     @Override
@@ -60,6 +81,8 @@ public class PaintingArea extends JPanel implements MouseListener
             case 2:
                 g.drawRect(point[0].x,point[0].y,Math.abs(point[1].x-point[0].x),Math.abs(point[1].y-point[0].y));
                 break;
+            case 3:
+
         }
     }
     public void drawShape(int choiceShape)
