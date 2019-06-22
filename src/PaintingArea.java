@@ -7,11 +7,11 @@ public class PaintingArea extends JPanel implements MouseListener
 {
     int choiceShape = -1;
     Point point[] = new Point[2];
-    int width;
-    int height;
+
     PaintingArea()
     {
         super();
+        this.setBackground(Color.white);
         point[0] = new Point(-1,-1);
         point[1] = new Point(-1,-1);
         addMouseListener(this);
@@ -54,15 +54,11 @@ public class PaintingArea extends JPanel implements MouseListener
                 break;
 
             case 1:
-                width = point[1].x-point[0].x;
-                height = point[1].y-point[0].y;
-                g.drawOval(point[0].x,point[0].y,width,height);
+                g.drawOval(point[0].x,point[0].y,Math.abs(point[1].x-point[0].x),Math.abs(point[1].y-point[0].y));
                 break;
 
             case 2:
-                width = point[1].x-point[0].x;
-                height = point[1].y-point[0].y;
-                g.drawRect(point[0].x,point[0].y,width,height);
+                g.drawRect(point[0].x,point[0].y,Math.abs(point[1].x-point[0].x),Math.abs(point[1].y-point[0].y));
                 break;
         }
     }
