@@ -5,25 +5,37 @@ import java.awt.event.ActionListener;
 
 public class PadFrame extends JFrame
 {
-    private JButton jb = new JButton("Line");
-    private JButton jb2 = new JButton("Oval");
-    private JButton jb3 = new JButton("Rect");
+    private JMenu menuFile = new JMenu("文件");
+    private JMenuBar menuBar = new JMenuBar();
+    private JMenuItem newItem = new JMenuItem("新建");
+    private JMenuItem openItem = new JMenuItem("打开");
+    private JMenuItem saveItem = new JMenuItem("保存");
+    private JMenuItem about = new JMenuItem("关于");
+    private JMenuItem closeItem = new JMenuItem("关闭");
+
+    private JButton lineButton = new JButton("Line");
+    private JButton ovalButton = new JButton("Oval");
+    private JButton rectButton = new JButton("Rect");
     private JButton CurveButton = new JButton("Curve");
-    private JButton jb4 = new JButton("CurveBug");
+    private JButton curveBugButton = new JButton("CurveBug");
     PadFrame()
     {
         initUI();
 
         Graphics g = this.getGraphics();
 
+        MenuActionListener menuActionListener = new MenuActionListener();
+        closeItem.addActionListener(menuActionListener);
         PadActionListener padActionListener = new PadActionListener(g);     //Add Action Listener
+
         this.addMouseListener(padActionListener);                           //Mouse Action Listener
         this.addMouseMotionListener(padActionListener);
-        jb.addActionListener(padActionListener);
-        jb2.addActionListener(padActionListener);
-        jb3.addActionListener(padActionListener);
+
+        lineButton.addActionListener(padActionListener);
+        ovalButton.addActionListener(padActionListener);
+        rectButton.addActionListener(padActionListener);
         CurveButton.addActionListener(padActionListener);
-        jb4.addActionListener(padActionListener);
+        curveBugButton.addActionListener(padActionListener);
 
     }
     public void initUI()
@@ -35,13 +47,21 @@ public class PadFrame extends JFrame
 
         FlowLayout flowLayout = new FlowLayout(FlowLayout.LEFT);
         this.setLayout(flowLayout);
-
-        this.add(jb);
-        this.add(jb2);
-        this.add(jb3);
+        //Add Menu
+        menuBar.add(menuFile);
+        menuFile.add(newItem);
+        menuFile.add(openItem);
+        menuFile.add(saveItem);
+        menuFile.add(about);
+        menuFile.addSeparator();
+        menuFile.add(closeItem);
+        this.add(menuBar);
+        //Add Button
+        this.add(lineButton);
+        this.add(ovalButton);
+        this.add(rectButton);
         this.add(CurveButton);
-        this.add(jb4);
-
+        this.add(curveBugButton);
 
         this.setVisible(true);
     }
