@@ -45,11 +45,11 @@ public class PadActionListener implements ActionListener, MouseListener, MouseMo
         }
         if("Oval".equals(storeString))
         {
-            g.drawOval(x1,y1,x2,y2);
+            g.drawOval(x1,y1,Math.abs(x2-x1),Math.abs(y2-y1));
         }
         if("Rect".equals(storeString))
         {
-            g.drawRect(x1,y1,x2,y2);
+            g.drawRect(x1,y1,Math.abs(x2-x1),Math.abs(y2-y1));
         }
     }
 
