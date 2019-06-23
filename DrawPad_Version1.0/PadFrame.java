@@ -20,6 +20,7 @@ public class PadFrame extends JFrame
     private JButton curveBugButton = new JButton("CurveBug");
     PadFrame()
     {
+        setUISkin();
         initUI();
 
         Graphics g = this.getGraphics();
@@ -64,6 +65,22 @@ public class PadFrame extends JFrame
         this.add(curveBugButton);
 
         this.setVisible(true);
+    }
+    public void setUISkin()   //Add UISkin
+    {
+        try
+        {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels())
+                if ("Nimbus".equals(info.getName()))
+                {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
     }
 
 
