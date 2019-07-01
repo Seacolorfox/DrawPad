@@ -6,6 +6,7 @@
     要求模拟Windows中的画图程序，实现图形图像的编辑、修改、保存等功能。
 
 ---
+![DrawPadVer1.0_pic](https://raw.githubusercontent.com/Seacolorfox/DrawPad/master/pic/DrawPadVer1.0_pic.png)
 Version1.0  
 
 20190623:画曲线(CurveBug)时意外写了个有趣的bug
